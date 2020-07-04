@@ -1,0 +1,65 @@
+<%- include("partials/header") %>
+<div class="main_div">
+      <h1>Address Details</h1>
+      <form action ="/blogs" method="POST">
+        <div class="mx-auto">
+          <div>
+            <label class="lable_layout">Pincode*</label>
+            <br>
+              <input class="input_layout" type="btn" id="pincode" name="blog[pincode]" onclick="get_details()" autocomplete="off">
+          </div>
+          <div>
+            <label class="lable_layout">House No.,Building name*</label>
+            <br>
+              <input class="input_layout" type="btn" id="pincode" name="blog[house_number]" autocomplete="off" >
+          </div>
+          <div>
+            <label class="lable_layout">Road Name,Area,Colony*</label>
+            <br>
+              <input class="input_layout" type="btn" id="pincode" name="blog[colony]" autocomplete="off" >
+          </div>
+          <div>
+            <label class="lable_layout" >City*</label>
+            <br>
+            <input class="input_layout" id="city" type="text" name="blog[city]" autocomplete="off" >
+
+          </div>
+          <div class= "field">
+            <label class="lable_layout">State*</label>
+            <br>
+          <input class="input_layout" id="state" type="text" name="blog[state]" autocomplete="off" >
+          </div>
+          <div class= "field">
+            <label class="lable_layout">Landmark*</label>
+            <br>
+          <input class="input_layout" id="landmark" type="text" name="blog[Landmark]" autocomplete="off">
+          </div>
+            <input  class="btn btn-primary lable_layout "type= Submit >
+
+        </div>
+      </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+    function get_details(){
+
+        var query=$("#pincode").val();;
+      console.log(query);
+      if($("#pincode").val()==" "){
+         $("#state").val(" ") ;
+         $("#city").val(" ") ;
+      } else{
+          fetch("https://api.postalpincode.in/pincode/"+query)
+          .then((apidata)=>{
+          return apidata.json();
+          })
+          .then((actualdata)=>{
+              $("#city").val(actualdata[0].PostOffice[0].District) ;
+              $("#state").val(actualdata[0].PostOffice[0].State) ;
+              console.log(actualdata[0].PostOffice[0].District);
+          })
+    }}
+
+    </script>
+  </body>
+</html

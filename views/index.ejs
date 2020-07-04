@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style media="screen">
+        body{
+          background: #f6f5f5;
+        }
+        .main_div{
+          width: 750px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 50px;
+          border: 2px solid #3a4750;
+          border-radius: 5px;
+          padding-left: 68px;
+          padding-right: 68px;
+        }
+</style>
+
+<div class="main_div">
+      <h1>Confirm Details</h1>
+	<% blogs.forEach(function(blog) {%>
+  <div>
+	  <h4>Pincode - <i><%=blog.pincode%></i></h4>
+	  <h4 >House No.,Building name - <i><%=blog.house_number%></i></h4>
+		  <h4 >Road Name,Area,Colony - <i><%=blog.colony%></i></h4>
+		  <h4 >City - <i><%=blog.city%></i></h4>
+	      <h4 >State - <i><%=blog.state%></i></h4>
+		  <h4 >Landmark - <i><%=blog.Landmark%></i></h4>
+	</div>
+		 <%  }) %>
+          </div>
+     
